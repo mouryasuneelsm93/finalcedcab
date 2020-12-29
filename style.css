@@ -1,0 +1,145 @@
+.container-fluid {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+    padding-top: 0px;
+    background-image: url('//cdn.dribbble.com/users/1550868/screenshots/6753483/new_application_design_mockup_of_taxi_app.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+h1 {
+    text-transform: capitalize;
+    color: white;
+    font-weight: bold;
+    font-size: 80px;
+    padding-top:4%;
+
+}
+
+.contain {
+    width: 100%;
+    padding-top: 3%;
+
+    background-color: rgba(0,0,100, .2);
+    padding-bottom: 1%;
+}
+
+p {
+    font-size: 20px;
+    color: white;
+    text-transform: capitalize;
+   
+}
+
+#p1 {
+
+    border-radius: 10px;
+    width: 30%;
+    color: black;
+    margin: auto;
+    text-align:center;
+    background-color: yellow;
+    text-transform: capitalize;
+}
+
+.b1 {
+    border-bottom: ridge;
+    padding-bottom: 10px;
+}
+
+.col1 {
+    background-color: white;
+    /* padding:10px 10px; */
+    padding-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    border-radius: 10px;
+    padding-bottom: 10px;
+
+}
+
+.r1 {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+h4{
+    font-size: 2.1rem!important;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+h5{
+    font-size: 1.5rem!important;
+    padding-bottom: 20px;
+}
+a{
+    font-size:20px;
+    font-family: 'Cinzel', serif;
+}
+.navbar
+{
+    border-radius: 0px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+}
+#message-show
+{
+    font-size:30px;
+    padding-left:10%;
+}
+.logo{
+    font-size:40px;
+    color:#D6DF22;
+    font-weight:bold;
+}
+
+.logo1{
+    font-size:40px;
+    color:rgba(0, 0, 0, .8);
+    font-weight:bold;
+}
+footer{
+    background-color:black;
+    text-align:center;
+    font-size:30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    color:white;
+}
+.fab{
+    font-size: 30px!important;
+    color:white;
+}
+
+
+@media screen and (max-width: 600px) {
+    h1 {
+        text-transform: capitalize;
+        color: white;
+        font-weight: bold;
+        font-size: 80px;
+        padding-top:20%;
+    
+    }
+}
