@@ -1,8 +1,25 @@
 <?php
+session_start();
+global $w;
+
 $pickup=$_POST["pickup"];
+$_SESSION['pickup']=$pickup;
 $drop=$_POST["drop"];
-$cab=$_POST["cabtype"];
+$_SESSION['drop']=$drop;
 $w=$_POST["luggage"];
+
+$cab=$_POST["cabtype"];
+$_SESSION['cab']=$cab;
+
+if($w>0)
+{
+    $_SESSION['luggage']=$w;
+}
+else{
+    $w=0;
+    $_SESSION['luggage']=$w;
+}
+
 global $arr;
 $arr=array(
     "Charbagh"=>"0",
@@ -33,8 +50,13 @@ class difference
             $dis2=$value;
         }
     }
-    $distance=$dis2-$dis1;
-    echo "Distance : ".abs($distance);      
+    $distance=abs($dis2-$dis1);
+$_SESSION['distance']=$distance;
+
+    echo "<table>";
+    echo "<tr><th>From</th><td>:</td><td>$pickup</td></tr>";
+    echo "<tr><th>To</th><td>:</td><td>$drop</td></tr>";
+    echo "<tr><th>Distance</th><td> :</td><td> ".abs($distance)."</td></tr>";      
     }
 }
 class vehicle extends difference
@@ -44,24 +66,24 @@ class vehicle extends difference
         global $distance;
         global $cab;
         global $dis2,$dis1,$distance,$arr,$pickup,$drop,$booking_amount,$bill,$w;
-        
+       
         if($cab=="CedMicro")
         {
             if($distance<=10)
             {
-                $rate=10*13.5+50;
+                $bill=10*13.5+50;
                 if($w<=0)
                 {
-                echo "<br>Total_bill:$rate";
+                echo "<tr><th>Total_bill</td><th>:</td><td>$bill</td></tr>";
                 }
             }
             else if($distance<=60)
             {
                 $dist=$distance-10;
-                $rate=10*13.5+50+($dist*12);
+                $bill=10*13.5+50+($dist*12);
                 if($w<=0)
                 {
-                echo "<br>Toatal_bill:$rate";
+                echo "<tr><th>Toatal_bill</th><td>:</td><td>$bill</td></tr>";
                 }
             }
             else if($distance<=160)
@@ -72,7 +94,7 @@ class vehicle extends difference
             $bill=50+($dist3*10.20)+$rate+$rate2;
             if($w<=0)
                 {
-            echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+            echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
                 }
         }
             else if($distance>160)
@@ -84,7 +106,7 @@ class vehicle extends difference
             $bill=50+($dist3*8.50)+$rate+$rate2+$rate3;
             if($w<=0)
                 {
-            echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+                    echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
                 }
             }
         }
@@ -98,7 +120,7 @@ class vehicle extends difference
             $bill=$booking_amount+($dist3*13.00)+$rate;
             if($w<=0)
             {
-        echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+                echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
             }
          }
             else if($distance<=160)
@@ -109,7 +131,7 @@ class vehicle extends difference
             $bill=$booking_amount+($dist3*11.20)+$rate+$rate2;
             if($w<=0)
                 {
-            echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+                    echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
                 }
             }
             else if($distance>160)
@@ -121,7 +143,7 @@ class vehicle extends difference
             $bill=$booking_amount+($dist3*9.50)+$rate+$rate2+$rate3;
             if($w<=0)
             {
-        echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+                echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
             } 
             }
         }
@@ -136,7 +158,7 @@ class vehicle extends difference
             $bill=$booking_amount+($dist3*14.00)+$rate;
             if($w<=0)
             {
-        echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+                echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
             } }
             else if($distance<=160)
             {
@@ -146,7 +168,7 @@ class vehicle extends difference
             $bill=$booking_amount+($dist3*12.20)+$rate+$rate2;
             if($w<=0)
             {
-        echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+                echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
             } 
             }
             else if($distance>160)
@@ -158,7 +180,7 @@ class vehicle extends difference
             $bill=$booking_amount+($dist3*10.50)+$rate+$rate2+$rate3;
             if($w<=0)
                 {
-            echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+                    echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
                 }
             }
         }
@@ -172,7 +194,7 @@ class vehicle extends difference
             $bill=$booking_amount+($dist3*15.00)+$rate;
             if($w<=0)
                 {
-            echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+                    echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
                 }}
             else if($distance<=160)
             {
@@ -182,7 +204,7 @@ class vehicle extends difference
             $bill=$booking_amount+($dist3*13.20)+$rate+$rate2;
             if($w<=0)
                 {
-            echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+                    echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
                 }
             }
             else if($distance>160)
@@ -194,7 +216,7 @@ class vehicle extends difference
             $bill=$booking_amount+($dist3*11.50)+$rate+$rate2+$rate3;
             if($w<=0)
                 {
-            echo "<br>Booking_Amount : 50"."<br>Total_Bill : ".abs($bill);
+                    echo "<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
                 }
             }
         }
@@ -210,48 +232,48 @@ class luggage extends vehicle
         if($w>0&&$w<=10&&$cab=="CedMini")
         {   
             $bill=$bill+50;
-            echo "<br>weight : $w kg"."<br>Total_Bill : ".abs($bill);
+            echo "<tr><th>weight</th><td> :</td><td>$w kg</td></tr>"."<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
         }
         if($w>10&&$w<=20&&$cab=="CedMini")
         {
             $bill=$bill+100;
-            echo "<br>weight : $w kg"."<br>Total_Bill : ".abs($bill);
+            echo "<tr><th>weight</th><td> :</td><td>$w kg</td></tr>"."<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
         }
         if($w>20&&$cab=="CedMini")
         {
             $bill=$bill+200;
-            echo "<br>weight : $w kg"."<br>Total_Bill : ".abs($bill);
+            echo "<tr><th>weight</th><td> :</td><td>$w kg</td></tr>"."<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
         }
         if($w>0&&$w<=10&&$cab=="CedRoyal")
         {   
             $bill=$bill+50;
-            echo "<br>weight : $w kg"."<br>Total_Bill : ".abs($bill);
+            echo "<tr><th>weight</th><td> :</td><td>$w kg</td></tr>"."<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
         }
         if($w>10&&$w<=20&&$cab=="CedRoyal")
         {
             $bill=$bill+100;
-            echo "<br>weight : $w kg"."<br>Total_Bill : ".abs($bill);
+            echo "<tr><th>weight</th><td> :</td><td>$w kg</td></tr>"."<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
         }
         if($w>20&&$cab=="CedRoyal")
         {
             $bill=$bill+200;
-            echo "<br>weight : $w kg"."<br>Total_Bill : ".abs($bill);
+            echo "<tr><th>weight</th><td> :</td><td>$w kg</td></tr>"."<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
         }
         if($w>0&&$w<=10&&$cab=="CedSUV")
         {
            
             $bill=$bill+100;
-            echo "<br>weight : $w kg"."<br>Total_Bill : ".abs($bill);
+            echo "<tr><th>weight</th><td> :</td><td>$w kg</td></tr>"."<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
         }
         if($w>10&&$w<=20&&$cab=="CedSUV")
         {
             $bill=$bill+200;
-            echo "<br>weight : $w kg"."<br>Total_Bill : ".abs($bill);
+            echo "<tr><th>weight</th><td> :</td><td>$w kg</td></tr>"."<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
         }
         if($w>20&&$cab=="CedSUV")
         {
             $bill=$bill+400;
-            echo "<br>weight : $w kg"."<br>Total_Bill : ".abs($bill);
+            echo "<tr><th>weight</th><td> :</td><td>$w kg</td></tr>"."<tr><th>Total_Bill</th><td> :</td><td> ".abs($bill)."</td></tr>";
         }
     }
 
@@ -261,4 +283,6 @@ $obj=new luggage();
 $obj->print1();
 $obj->cedmicro();
 $obj->lug();
+
+$_SESSION['fare']=$bill;
 ?>

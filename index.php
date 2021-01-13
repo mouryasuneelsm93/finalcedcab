@@ -1,57 +1,46 @@
+<?php
+session_start();
+
+
+if(isset($_SESSION['admin']))
+{
+    header("Location:admin/dashboard.php");  
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title> -->
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
 
+
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="index.php"><span class="logo">CED </span><span class="logo1">CAB</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="cab_drive.php">Cab Drive |<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cab Select |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cab Fleet |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <input type="button" class="btn btn-success" value="Book Now"
-                        style="height:50px;font-size:2.1rem!important;background-color:#D6DF22;font-weight:bold;">
-                </li>
-            </ul>
-        </div>
-    </nav>
+
+    <?php
+
+include "header.php";
+   ?>
     <div class="container-fluid">
         <div class="contain">
             <div class="text-center">
@@ -97,7 +86,7 @@
                                 <label class="input-group-text" for="inputGroupSelect01">DROP</label>
                             </div>
                             <select id="drop" class="form-control" style="height:40px;-webkit-appearance: none;">
-                                <option selected value="option1">Destination</option>
+                                <option selected value="Destination">Destination</option>
                                 <option value="Charbagh">Charbagh</option>
                                 <option value="Indira Nagar">Indira Nagar</option>
                                 <option value="BBD">BBD</option>
@@ -126,21 +115,28 @@
                         </div>
 
 
-                        <input type="text" class="input-group input-group-lg" style="height:40px;" id="luggage"
-                            placeholder="Enter weight in kg">
+                        <input type="number" step=".000001" class="input-group input-group-lg" style="height:40px;"
+                            id="luggage" placeholder="Enter weight in kg">
 
                         <br>
-                        <input type="submit" value="Calculate Free" class="form-control btn btn-success"
+                        <input type="submit" value="Calculate Fare" class="form-control btn btn-success"
                             data-toggle="modal" data-target="#myModal"
                             style="height:50px;font-size:2.1rem!important;background-color:#D6DF22;">
-                        <!-- The Modal -->
-                        <div class="modal fade" id="myModal">
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
                                     <!-- Modal Header -->
                                     <div class="modal-header">
-                                        <h3>Billing Details</h3>
+                                        <span class="logo">Details</span>
+                                        
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
 
@@ -151,38 +147,25 @@
 
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal"
-                                            style="height:50px;font-size:2.1rem!important;background-color:#D6DF22;">Book
+                                    <!-- <a href="login.php"> <button class="btn btn-danger"  data-dismiss="modal"
+                                            style="height:50px;font-size:2.1rem!important;background-color:#D6DF22;"
+                                            >Book
+                                            Now</button></a> -->
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="book()" style="height:50px;font-size:2.1rem!important;background-color:#D6DF22;">Book
                                             Now</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal"
-                                            style="height:50px;font-size:2.1rem!important;background-color:#D6DF22;">Close</button>
+                                        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                            style="height:50px;font-size:2.1rem!important;background-color:#D6DF22;">Close</button> -->
                                     </div>
 
                                 </div>
                             </div>
                         </div>
+    <?php 
 
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    </div>
-    <footer>
-        <div class="row">
-            <div class="col-sm-4 text-center">
-                <a href=""><i class="fab fa-facebook-f"></i></a>
-                <a href=""><i class="fab fa-instagram"></i></a>
-                <a href=""><i class="fab fa-google"></i></a>
-            </div>
-            <div class="col-sm-4 text-center">
-                copyright@cedcab.com
-            </div>
-            <div class="col-sm-4 text-center">
+include "footer.php";
+   ?>
 
-            </div>
-        </div>
-    </footer>
+
 </body>
 
 </html>
@@ -190,12 +173,40 @@
     crossorigin="anonymous"></script>
 
 <script>
+    function book()
+    {
+        $.ajax({
+            type:'POST',
+            url:'book.php',
+            data:$(this).serialize(),
+            success:function(data){
+            console.log(data);
+                if(data==1)
+                {
+                    alert("please login first");
+                    window.location.href="login.php";
+                }
+                else if(data=="successfuly submit")
+                {   
+                    confirm("Do you want to book ride!");
+                    // alert("your ride has been booked but approval is needed from admin please wait for the approval");
+                    window.location.href="user/userdashboard.php";
+                }
+                else if(data==2)
+                {
+                    alert("you can't book ride because admin had blocked you");
+                    
+                }
+            }
+        })
+    }
     function pro() {
         var ced = document.getElementById("cabtype").value;
         if (ced == "CedMicro") {
+            $('#luggage').val('');
             $("#luggage").prop("disabled", true);
             $("#luggage").attr("placeholder", "Carriage is not available for CedMicro").placeholder();
-           
+
 
         }
         else {
@@ -214,25 +225,40 @@
             $(this).data('previous', value);
             $('select').not(this).find('option[value="' + value + '"]').hide();
         });
+        $('#luggage').keyup(function () {
+            vals = this.value;
+            if (vals === "") {
+                document.getElementById("message-show").innerHTML = "please enter valid weight";
+            }
+        });
+        document.querySelector("#luggage").addEventListener("keypress", function (evt) {
+            if ((evt.which < 48 || evt.which > 57) && evt.which != 46) {
+                evt.preventDefault();
+            }
+        });
         $("#loginform").submit(function (e) {
             e.preventDefault();
             var a = $("#pickup").val();
             var b = $("#drop").val();
             var c = $("#cabtype").val();
             var d = $("#luggage").val();
-            
+
             if (a == "Current Location") {
-                document.getElementById("message-show").innerHTML= "Please select your current location";
+                document.getElementById("message-show").innerHTML = "Please select your current location";
             }
             else if (b == "Destination") {
-                document.getElementById("message-show").innerHTML= "please select your destination";
+                document.getElementById("message-show").innerHTML = "please select your destination";
             }
             else if (c == "Select Cab") {
-                document.getElementById("message-show").innerHTML= "please select Cab";
+                document.getElementById("message-show").innerHTML = "please select Cab";
             }
+            else if (d > 500) {
+                document.getElementById("message-show").innerHTML = "max limit of weight is 500kg";
+            }
+
             else {
                 //console.log(a);
-               
+
                 $.ajax({
                     type: "POST",
                     url: "next.php",
@@ -240,6 +266,7 @@
                     success: function (data) {
                         console.log(data);
                         document.getElementById("message-show").innerHTML = data;
+
                     }
                 })
             }

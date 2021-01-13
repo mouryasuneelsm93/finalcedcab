@@ -1,3 +1,9 @@
+
+body{
+    padding-right:0px;
+    padding-left:0px;
+}
+
 .container-fluid {
     width: 100%;
     margin-left: 0px;
@@ -9,9 +15,15 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+   
+    
 
 }
 
+.row{
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+}
 h1 {
     text-transform: capitalize;
     color: white;
@@ -24,9 +36,10 @@ h1 {
 .contain {
     width: 100%;
     padding-top: 3%;
-
+    height:100vh;
+    overflow:hidden;
     background-color: rgba(0,0,100, .2);
-    padding-bottom: 1%;
+    padding-bottom: 1%!important;
 }
 
 p {
@@ -43,7 +56,7 @@ p {
     color: black;
     margin: auto;
     text-align:center;
-    background-color: yellow;
+    background-color: #D6DF22;
     text-transform: capitalize;
 }
 
@@ -58,10 +71,10 @@ p {
     padding-top: 10px;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 5%;
+    margin-top: 1%;
     border-radius: 10px;
     padding-bottom: 10px;
-
+    
 }
 
 .r1 {
@@ -83,13 +96,25 @@ h5{
     font-size: 1.5rem!important;
     padding-bottom: 20px;
 }
+
+
+ 
+.navbar-dark .navbar-nav .nav-link {
+   
+    color: #D6DF22!important;
+}
 a{
     font-size:20px;
+    
     font-family: 'Cinzel', serif;
 }
+
+   
 .navbar
 {
     border-radius: 0px;
+    width:100vw;
+    background-color: #1F2042!important;
 }
 
 .modal {
@@ -105,7 +130,8 @@ a{
 }
 #message-show
 {
-    font-size:30px;
+    font-size:20px;
+    color:rgba(0,0,0, .7);
     padding-left:10%;
 }
 .logo{
@@ -114,24 +140,65 @@ a{
     font-weight:bold;
 }
 
+#login1
+{
+    max-width:50%;
+    
+    margin:auto;
+    border-radius: 10px;
+    padding-top:10px;
+    padding-bottom:5%;
+    background-color:white;
+    display: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+  }
+.h:hover{
+
+    -webkit-appearance: none!important;
+    -moz-appearance: none!important;
+}
 .logo1{
-    font-size:40px;
-    color:rgba(0, 0, 0, .8);
+    font-size:20px;
+    color:#0089D3;
     font-weight:bold;
 }
 footer{
-    background-color:black;
+    background-color:#1F2042!important;
     text-align:center;
     font-size:30px;
-    padding-bottom: 20px;
-    padding-top: 20px;
+  
+    width:100%;
+   
+
+  
+    
     color:white;
 }
 .fab{
     font-size: 30px!important;
     color:white;
 }
-
+.fab:hover{
+    color:#0089D3;
+}
+h3:hover{
+    color:#0089D3;
+}
+.about
+{
+    color:#D6DF22;
+    font-weight: bold;
+}
+a:hover{
+    text-decoration: none!important;
+}
 
 @media screen and (max-width: 600px) {
     h1 {
@@ -142,4 +209,39 @@ footer{
         padding-top:20%;
     
     }
+
+
+#p1 {
+    border-radius: 10px;
+    width: 50%;
+    color: black;
+    margin: auto;
+    text-align: center;
+    background-color: #D6DF22;
+    text-transform: capitalize;
+}
+footer{
+    background-color:	#1F2042!important;
+    text-align:center;
+    font-size:20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    color:white;
+    margin-top:4%!important;
+    
+}
+}
+.btn:hover
+{
+    background-color:#0089D3!important;
+}
+#signup{
+    max-width:50%;
+    
+    margin:auto;
+    border-radius: 10px;
+    padding-top:10px;
+    padding-bottom:5%;
+    background-color:white;
+    display: none;
 }
